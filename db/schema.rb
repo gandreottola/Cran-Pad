@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 2019_07_22_145534) do
     t.string "category", null: false
     t.text "description", null: false
     t.datetime "date", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +45,5 @@ ActiveRecord::Schema.define(version: 2019_07_22_145534) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "ideas", "users"
 end

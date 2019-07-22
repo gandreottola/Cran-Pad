@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:4741/create-idea" \
+curl "http://localhost:4741/ideas" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \

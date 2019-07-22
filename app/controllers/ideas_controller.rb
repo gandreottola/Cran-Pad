@@ -1,5 +1,5 @@
-class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :update, :destroy]
+class IdeasController < OpenReadController
+  before_action :set_idea, only: %i[show update destroy]
 
   # GET /ideas
   def index
@@ -15,7 +15,7 @@ class IdeasController < ApplicationController
 
   # POST /ideas
   def create
-    @idea = Idea.new(idea_params)
+    @idea = current_user.ideas.build(idea_params)
 
     if @idea.save
       render json: @idea, status: :created, location: @idea
@@ -39,9 +39,10 @@ class IdeasController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
-      @idea = Idea.find(params[:id])
+      @idea = current_user.ideas.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
