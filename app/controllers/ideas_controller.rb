@@ -17,7 +17,7 @@ class IdeasController < OpenReadController
 
   # POST /ideas
   def create
-    @idea = current_user.idea.build(idea_params)
+    @idea = current_user.ideas.build(idea_params)
 
     if @idea.save
       render json: @idea, status: :created, location: @idea
