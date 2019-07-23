@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_07_22_145534) do
     t.string "name", null: false
     t.string "category", null: false
     t.text "description", null: false
-    t.datetime "date", null: false
+    t.date "date", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

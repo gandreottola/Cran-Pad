@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class IdeasController < OpenReadController
-  before_action :set_idea, only: %i[show update destroy]
+  before_action :set_idea, only: %i[update destroy]
 
   # GET /ideas
   def index
@@ -8,14 +10,14 @@ class IdeasController < OpenReadController
     render json: @ideas
   end
 
-  # GET /ideas/1
+  # GET /ideas/:id
   def show
-    render json: @idea
+    render json: Idea.find(params[:id])
   end
 
   # POST /ideas
   def create
-    @idea = current_user.ideas.build(idea_params)
+    @idea = current_user.idea.build(idea_params)
 
     if @idea.save
       render json: @idea, status: :created, location: @idea
@@ -24,7 +26,7 @@ class IdeasController < OpenReadController
     end
   end
 
-  # PATCH/PUT /ideas/1
+  # PATCH/PUT /ideas/:id
   def update
     if @idea.update(idea_params)
       render json: @idea
@@ -33,20 +35,20 @@ class IdeasController < OpenReadController
     end
   end
 
-  # DELETE /ideas/1
+  # DELETE /ideas/:id
   def destroy
     @idea.destroy
   end
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_idea
-      @idea = current_user.ideas.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_idea
+    @idea = current_user.ideas.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def idea_params
-      params.require(:idea).permit(:name, :category, :description, :date)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def idea_params
+    params.require(:idea).permit(:name, :category, :description, :date)
+  end
 end

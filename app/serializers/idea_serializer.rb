@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class IdeaSerializer < ActiveModel::Serializer
-  attributes :id, :name, :category, :description, :date, :editable
+  attributes :id, :name, :category, :description, :date
 
-  def editable
-    scope == object.user
-  end
+  belongs_to :user
 end
