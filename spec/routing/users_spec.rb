@@ -36,4 +36,12 @@ RSpec.describe 'routes for users' do
       id: '1'
     )
   end
+
+  it 'routes PATCH /users/:id to the users#update action' do
+    expect(patch('/users/1')).to route_to(
+      controller: 'users',
+      action: 'update',
+      id: '1'
+    )
+  end
 end
