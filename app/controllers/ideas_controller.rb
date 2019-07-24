@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class IdeasController < OpenReadController
+class IdeasController < ProtectedController
   before_action :set_idea, only: %i[update destroy]
 
   # GET /ideas
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas.all
 
     render json: @ideas
   end
