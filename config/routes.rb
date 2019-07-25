@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   # Users
   get '/users' => 'users#index'
   get 'users/:id' => 'users#show'
-  patch '/users' => 'users#update'
+  patch '/users/:id' => 'users#update'
 end

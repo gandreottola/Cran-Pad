@@ -58,7 +58,7 @@ class UsersController < ProtectedController
     end
   end
 
-  # PATCH '/users/${ID}'
+  # PATCH '/users/$:id'
   def update
     render json: current_user.update(user_params)
   end
