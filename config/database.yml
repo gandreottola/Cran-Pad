@@ -1,4 +1,4 @@
-<% project_name = 'cran-pad' %>
+<% project_name = 'idea-board' %>
 
 default: &default
   adapter: postgresql
