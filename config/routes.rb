@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   # RESTful routes
-  resources :examples, :ideas, except: %i[new edit]
+  resources :examples, :ideas, :tasks, except: %i[new edit]
 
   # Authentication
   post '/sign-up' => 'users#signup'
